@@ -3,6 +3,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const _ = require('lodash');
+const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
   prompting() {
@@ -31,7 +32,15 @@ module.exports = class extends Generator {
       this.props = props;
     });
   }
-
+  default() {
+    this.log(
+      `Your project must be inside a folder named 
+        ${this.props.name}
+        \nI'll automatically create this folder.`
+    );
+    mkdirp(this.props.name);
+    this.destinationRoot(this.destinationPath(this.props.name));
+  }
   writing() {
     this.fs.copy(
       this.templatePath('dummyfile.txt'),
