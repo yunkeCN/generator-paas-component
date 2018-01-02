@@ -40,6 +40,9 @@ module.exports = class extends Generator {
     );
     mkdirp(this.props.name);
     this.destinationRoot(this.destinationPath(this.props.name));
+    this.composeWith(require.resolve('../bussness'), {
+      name: this.props.name
+    });
   }
   _writePackage(extendPkg) {
     this.fs.writeJSON(
