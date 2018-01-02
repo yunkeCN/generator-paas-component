@@ -11,6 +11,7 @@ describe('generator-paas-component:app', () => {
   });
 
   it('creates files', () => {
-    assert.file(['README.md']);
+    assert.file(['README.md', 'index.js', 'src/index.js', 'designer']);
+    assert.fileContent('src/index.js', 'id: "awesome_name"');
   });
 });
