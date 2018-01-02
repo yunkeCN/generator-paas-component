@@ -2,23 +2,32 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const _ = require('lodash');
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the splendid ' + chalk.red('generator-paas-component') + ' generator!'
-    ));
+    this.log(
+      yosay(
+        'Welcome to the splendid ' + chalk.red('generator-paas-component') + ' generator!'
+      )
+    );
 
-    const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: "please input your component's name",
+        default: '',
+        filter: _.kebabCase
+      },
+      {
+        type: 'input',
+        name: 'description',
+        message: 'please input your description',
+        default: ''
+      }
+    ]).then(props => {
       this.props = props;
     });
   }
@@ -31,6 +40,10 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies();
+    if (!this.options.skipInstall) {
+      this.installDependencies({
+        bower: false
+      });
+    }
   }
 };
