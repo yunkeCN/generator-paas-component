@@ -43,6 +43,9 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../bussness'), {
       name: this.props.name
     });
+    this.composeWith(require.resolve('../git'), {
+      name: this.props.name
+    });
   }
   _writePackage(extendPkg) {
     this.fs.writeJSON(
