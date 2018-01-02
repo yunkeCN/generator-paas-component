@@ -41,18 +41,23 @@ module.exports = class extends Generator {
     mkdirp(this.props.name);
     this.destinationRoot(this.destinationPath(this.props.name));
   }
-  writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+  _writePackage(extendPkg) {
+    this.fs.writeJSON(
+      this.destinationPath('package.json'),
+      extendPkg(this.fs.readJSON(this.destinationPath('package.json'), {}))
     );
   }
-
-  install() {
-    if (!this.options.skipInstall) {
-      this.installDependencies({
-        bower: false
-      });
-    }
+  Writing() {
+    this._writePackage(() => ({
+      name: this.props.name,
+      description: this.props.description,
+      version: '0.0.1',
+      main: 'index.js',
+      scripts: {
+        test: 'echo "Error: no test specified" && exit 1'
+      },
+      author: '',
+      license: 'ISC'
+    }));
   }
 };
