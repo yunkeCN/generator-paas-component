@@ -29,4 +29,11 @@ module.exports = class extends Generator {
       this.destinationPath('.eslintignore')
     );
   }
+  install() {
+    if (!this.options.skipInstall) {
+      this.installDependencies({
+        bower: false
+      });
+    }
+  }
 };
