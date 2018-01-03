@@ -47,14 +47,8 @@ module.exports = class extends Generator {
       name: this.props.name
     });
   }
-  _writePackage(extendPkg) {
-    this.fs.writeJSON(
-      this.destinationPath('package.json'),
-      extendPkg(this.fs.readJSON(this.destinationPath('package.json'), {}))
-    );
-  }
   Writing() {
-    this._writePackage(() => ({
+    this.fs.extendJSON(this.destinationPath('package.json'), {
       name: this.props.name,
       description: this.props.description,
       version: '0.0.1',
@@ -64,6 +58,6 @@ module.exports = class extends Generator {
       },
       author: '',
       license: 'ISC'
-    }));
+    });
   }
 };
