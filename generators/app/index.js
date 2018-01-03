@@ -46,6 +46,7 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../git'), {
       name: this.props.name
     });
+    this.composeWith(require.resolve('../eslint'));
   }
   Writing() {
     this.fs.extendJSON(this.destinationPath('package.json'), {
