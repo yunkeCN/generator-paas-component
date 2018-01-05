@@ -6,6 +6,10 @@ const _ = require('lodash');
 const mkdirp = require('mkdirp');
 
 const prefix = 'broker';
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
+
+updateNotifier({ pkg }).notify();
 
 module.exports = class extends Generator {
   prompting() {
