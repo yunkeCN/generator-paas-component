@@ -5,6 +5,8 @@ const yosay = require('yosay');
 const _ = require('lodash');
 const mkdirp = require('mkdirp');
 
+const prefix = 'broker';
+
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
@@ -20,7 +22,13 @@ module.exports = class extends Generator {
         name: 'name',
         message: "please input your component's name",
         default: '',
-        filter: _.kebabCase
+        filter: name => {
+          name = _.kebabCase(name);
+          if (!_.startsWith(name, prefix)) {
+            name = `${prefix}-${name}`;
+          }
+          return name;
+        }
       },
       {
         type: 'input',
