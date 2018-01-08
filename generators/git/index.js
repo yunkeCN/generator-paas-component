@@ -27,7 +27,7 @@ module.exports = class extends Generator {
     this.spawnCommandSync('git', ['init', '--quiet'], {
       cwd: this.destinationPath('')
     });
-    const repoSSH = 'git@git.mysoft.com.cn:' + this.pkg.repository + '.git';
+    const repoSSH = this.pkg.repository;
     this.spawnCommandSync('git', ['remote', 'add', 'origin', repoSSH], {
       cwd: this.destinationPath('')
     });
