@@ -59,6 +59,7 @@ module.exports = class extends Generator {
       name: this.props.name
     });
     this.composeWith(require.resolve('../eslint'));
+    this.composeWith(require.resolve('../editorconfig'));
   }
   Writing() {
     this.fs.extendJSON(this.destinationPath('package.json'), {
