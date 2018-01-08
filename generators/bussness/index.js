@@ -11,6 +11,7 @@ module.exports = class extends Generator {
       desc: 'paas id and project name'
     });
   }
+
   Writing() {
     this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), {
       name: this.options.name
