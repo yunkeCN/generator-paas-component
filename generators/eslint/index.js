@@ -18,7 +18,13 @@ module.exports = class extends Generator {
         extends: 'airbnb-base',
         plugins: [
           'html'
-        ]
+        ],
+        rules: {
+          'semi': 0,
+          'comma-dangle': 0,
+          'linebreak-style': 0,
+          'no-console': 0,
+        }
       }
     };
 
