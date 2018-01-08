@@ -1,24 +1,24 @@
-'use strict';
+/* eslint-disable prettier/prettier */
 const Generator = require('yeoman-generator');
-const rootPkg = require('../../package.json');
 
 module.exports = class extends Generator {
   writing() {
     const pkgJson = {
       devDependencies: {
-        eslint: rootPkg.devDependencies.eslint,
-        prettier: rootPkg.devDependencies.prettier,
-        husky: rootPkg.devDependencies.husky,
-        'lint-staged': rootPkg.devDependencies['lint-staged'],
-        'eslint-config-prettier': rootPkg.devDependencies['eslint-config-prettier'],
-        'eslint-plugin-prettier': rootPkg.devDependencies['eslint-plugin-prettier'],
-        'eslint-config-xo': rootPkg.devDependencies['eslint-config-xo']
+        "eslint": "^4.1.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-plugin-html": "^4.0.1",
+        "eslint-plugin-import": "^2.8.0"
       },
-      'lint-staged': rootPkg['lint-staged'],
-      eslintConfig: rootPkg.eslintConfig,
-      scripts: {
-        pretest: rootPkg.scripts.pretest,
-        precommit: rootPkg.scripts.precommit
+      eslintConfig: {
+        parser: 'babel-eslint',
+        parserOptions: {
+          sourceType: 'module'
+        },
+        extends: 'airbnb-base',
+        plugins: [
+          'html'
+        ]
       }
     };
 
@@ -29,10 +29,13 @@ module.exports = class extends Generator {
       this.destinationPath('.eslintignore')
     );
   }
+
   install() {
     if (!this.options.skipInstall) {
       this.installDependencies({
-        bower: false
+        bower: false,
+        yarn: true,
+        npm: false
       });
     }
   }
