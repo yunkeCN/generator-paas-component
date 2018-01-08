@@ -18,7 +18,7 @@ module.exports = class extends Generator {
     );
     this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
     this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    const repository = 'yunke-paas/' + this.options.name;
+    const repository = `git@git.mysoft.com.cn:yunke-paas/${this.options.name}.git`;
     this.pkg.repository = this.pkg.repository || repository;
     this.fs.writeJSON(this.destinationPath('package.json'), this.pkg);
   }
