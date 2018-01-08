@@ -8,32 +8,29 @@
 </template>
 
 <script>
-
-    export default {
-        props: {
-            value: Object,
-            msgList:Array,
-            open:Boolean
-        },
-        data() {
-            return {}
-        },
-        computed: {},
-        watch: {},
-        methods: {},
-        beforeCreate() {
-        },
-        updated() {
-            console.log(this)
-        },
-        created() {
-        console.log(this)
-        }
-    }
+export default {
+  props: {
+    value: Object,
+    msgList: Array,
+    open: Boolean
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  watch: {},
+  methods: {},
+  beforeCreate() {},
+  updated() {
+    console.log(this);
+  },
+  created() {
+    console.log(this);
+  }
+};
 </script>
 
 <style lang="less">
-    .marquee-wrap .colse-btn {
-    }
-
+.marquee-wrap .colse-btn {
+}
 </style>
