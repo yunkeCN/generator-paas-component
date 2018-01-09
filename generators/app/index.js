@@ -5,7 +5,6 @@ const yosay = require('yosay');
 const _ = require('lodash');
 const mkdirp = require('mkdirp');
 
-const prefix = 'broker';
 const updateNotifier = require('update-notifier');
 const pkg = require('../../package.json');
 
@@ -25,14 +24,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: "please input your component's name",
-        default: '',
-        filter: name => {
-          name = _.kebabCase(name);
-          if (!_.startsWith(name, prefix)) {
-            name = `${prefix}-${name}`;
-          }
-          return name;
-        }
+        default: ''
       },
       {
         type: 'input',
