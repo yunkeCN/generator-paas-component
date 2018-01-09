@@ -1,14 +1,14 @@
-/* eslint-disable prettier/prettier */
+'use strict';
 const Generator = require('yeoman-generator');
 
 module.exports = class extends Generator {
   writing() {
     const pkgJson = {
       devDependencies: {
-        "eslint": "^4.1.0",
-        "eslint-config-airbnb-base": "^12.1.0",
-        "eslint-plugin-html": "^4.0.1",
-        "eslint-plugin-import": "^2.8.0"
+        eslint: '^4.1.0',
+        'eslint-config-airbnb-base': '^12.1.0',
+        'eslint-plugin-html': '^4.0.1',
+        'eslint-plugin-import': '^2.8.0'
       },
       eslintConfig: {
         parser: 'babel-eslint',
@@ -16,14 +16,12 @@ module.exports = class extends Generator {
           sourceType: 'module'
         },
         extends: 'airbnb-base',
-        plugins: [
-          'html'
-        ],
+        plugins: ['html'],
         rules: {
-          'semi': 0,
+          semi: 0,
           'comma-dangle': 0,
           'linebreak-style': 0,
-          'no-console': 0,
+          'no-console': 0
         }
       }
     };
