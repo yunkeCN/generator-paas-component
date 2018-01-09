@@ -18,6 +18,10 @@ module.exports = class extends Generator {
         extends: 'airbnb-base',
         plugins: ['html'],
         rules: {
+          indent: [
+            "error",
+            4
+          ],
           semi: 0,
           'comma-dangle': 0,
           'linebreak-style': 0,
