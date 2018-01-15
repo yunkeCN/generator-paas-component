@@ -1,7 +1,6 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
-const yosay = require('yosay');
 const mkdirp = require('mkdirp');
 
 const updateNotifier = require('update-notifier');
@@ -11,9 +10,9 @@ updateNotifier({ pkg }).notify();
 
 module.exports = class extends Generator {
     prompting() {
-        // Have Yeoman greet the user.
-        let red = chalk.red('generator-paas-component');
-        this.log(yosay(`Welcome to the splendid ${red} generator!`));
+        this.log(
+            `Welcome to the splendid ${chalk.red('generator-paas-component')} generator!`
+        );
 
         return this.prompt([
             {
