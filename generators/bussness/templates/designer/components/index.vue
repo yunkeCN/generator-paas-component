@@ -27,7 +27,7 @@
         },
         methods: {
             commit(open) {
-                this.$emit('onupdate', {
+                this.$emit('input', {
                     props: {
                         open,
                         msgList: this.list
